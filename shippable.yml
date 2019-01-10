@@ -9,13 +9,38 @@ build:
     image_tag: v6.7.4
     pull: true
     
-  ci:
-    - python --version     
-    - docker pull shippabledocker/sample_node_pvt:ecr
+  ci:   
+    - java -version
+    - node --version
+    - yarn -version
+    - source /usr/local/rvm/scripts/rvm
+    - ruby -v
+    - python -V
+    - pip --version
+    - virtualenv --version
+    - git --version
+    - aws --version #1.15.55
+    - gcloud version #207.0.0
+    - kubectl version --client #1.11.0
+    - doctl version #1.8.3
+    - jfrog --version #1.17.0
+    - az --version #2.0.41   
+    - git lfs version    
+    - kops version
+    - helm version --client     
+    - ansible --version #2.6.1
+    #- pip show boto #2.48.0
+    #- pip show boto3
+    #- pip show apache-libcloud #2.3.0
+    - packer --version #1.2.4
+    - jq --version
+    - terraform --version #0.11.7
+    - openstack --version
     - EXPECTED_DOCKER_VERSION="17.06.0-ce"
     - |
       [ $(docker version --format {{.Server.Version}}) == "$EXPECTED_DOCKER_VERSION" ]
-    
+    - docker pull shippabledocker/sample_node_pvt:ecr
+ 
 integrations:
     
   hub:
